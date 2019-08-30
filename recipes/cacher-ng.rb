@@ -26,7 +26,7 @@ directory node['apt']['cacher_dir'] do
 end
 
 #allow domain remapping so we can cache ssl repositories
-for key, mapping in ['apt']['repository_remappings']
+for key, mapping in node['apt']['repository_remappings']
   file "/etc/apt-cacher-ng/backends_#{key}" do
     content mapping['to']
     owner 'root'
