@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@chef.io'
 license 'Apache-2.0'
 description 'Configures apt and apt caching.'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version '7.2.0'
+version '7.2.1'
 
 %w(ubuntu debian).each do |os|
   supports os

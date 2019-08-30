@@ -97,6 +97,21 @@ Installs the `apt-cacher-ng` package and service so the system can provide APT c
 
 If you wish to help the `cacher-ng` recipe seed itself, you must now explicitly include the `cacher-client` recipe in your run list **after** `cacher-ng` or you will block your ability to install any packages (ie. `apt-cacher-ng`).
 
+To allow caching of ssl repositories you will need to define a remapping as per https://blog.packagecloud.io/eng/2015/05/05/using-apt-cacher-ng-with-ssl-tls/
+
+```json
+{
+    "apt": {
+        "repository_remappings": {
+            "elasticsearch": {
+                "from": "http://elasticsearch.local",
+                "to": "https://artifacts.elastic.co/packages/7.x/apt"
+            }
+        }
+    }
+}
+```
+
 ### unattended-upgrades
 
 Installs and configures the `unattended-upgrades` package to provide automatic package updates. This can be configured to upgrade all packages or to just install security updates by setting `['apt']['unattended_upgrades']['allowed_origins']`.

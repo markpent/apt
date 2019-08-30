@@ -60,3 +60,5 @@ default['apt']['confd']['force_confnew'] = false
 default['apt']['confd']['force_confold'] = false
 default['apt']['confd']['install_recommends'] = true
 default['apt']['confd']['install_suggests'] = false
+
+default['apt']['repository_remappings'] = {}

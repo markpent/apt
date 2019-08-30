@@ -25,6 +25,17 @@ directory node['apt']['cacher_dir'] do
   mode '0755'
 end
 
+#allow domain remapping so we can cache ssl repositories
+for key, mapping in ['apt']['repository_remappings']
+  file "/etc/apt-cacher-ng/backends_#{key}" do
+    content mapping['to']
+    owner 'root'
+    group 'root'
+    mode '0644'
+    notifies :restart, 'service[apt-cacher-ng]', :immediately
+  end
+end
+
 template '/etc/apt-cacher-ng/acng.conf' do
   source 'acng.conf.erb'
   owner 'root'
