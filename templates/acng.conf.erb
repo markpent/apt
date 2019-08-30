@@ -44,7 +44,7 @@ Remap-fedora:  file:fedora_mirrors # Fedora Linux
 Remap-epel:   file:epel_mirrors # Fedora EPEL
 Remap-slrep:  file:sl_mirrors # Scientific Linux
 <% for key in node['apt']['repository_remappings'].keys.sort 
-  mapping = ['apt']['repository_remappings'][key] %>
+  mapping = node['apt']['repository_remappings'][key] %>
 Remap-<%=key%>: <%=mapping['from']%> ; file:backends_<%=key%>
 <% end %>
 
