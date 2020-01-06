@@ -1,7 +1,11 @@
 Acquire::http::Proxy "http://<%= @server['host'] %>:<%= @server['port'] %>";
-<% if @server['proxy_ssl'] %>
+<% if @server['proxy_ssl']
+  if @server['proxy_ssl'] == true %>
 Acquire::https::Proxy "http://<%= @server['host'] %>:<%= @server['port'] %>";
 <% else %>
+Acquire::https::Proxy "<%=@server['proxy_ssl']%>";
+<% end
+else %>
 Acquire::https::Proxy "DIRECT";
 <% end %>
 <% unless @server['cache_bypass'].nil? %>

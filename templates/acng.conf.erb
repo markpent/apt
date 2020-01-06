@@ -30,6 +30,9 @@ Port:<%= node['apt']['cacher_port'] %>
 #
 #Proxy: http://www-proxy.example.net:80
 #proxy: username:proxypassword@proxy.example.net:3128
+<% if node['apt']['cacher_proxy'] %>
+Proxy: <%=node['apt']['cacher_proxy']%>
+<% end %>
 
 # Repository remapping. See manual for details.
 # In this example, some backends files might be generated during package
